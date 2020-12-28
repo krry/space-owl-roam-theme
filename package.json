@@ -1,9 +1,17 @@
 {
+  "name": "space-owl-roam-theme",
+  "version": "0.0.1",
+  "description": "a theme for roam suitable for an owl from space",
+  "main": "space-owl.md",
+  "repository": "git@github.com:krry/space-owl-roam-theme.git",
+  "author": "Kerry Snyder <kerry@atmanaut.me>",
+  "license": "CC-SA-BY-NC-4.0",
   "dependencies": {
     "embedme": "^1.22.0",
     "husky": "^4.3.6"
   },
   "husky": {
     "precommit": "yarn embedme space-owl.md"
-  }
+  },
+  "private": false
 }
