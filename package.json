@@ -5,13 +5,16 @@
   "main": "space-owl.md",
   "repository": "git@github.com:krry/space-owl-roam-theme.git",
   "author": "Kerry Snyder <kerry@atmanaut.me>",
-  "license": "CC-SA-BY-NC-4.0",
-  "dependencies": {
+  "license": "CC-BY-NC-SA-4.0",
+  "private": false,
+  "scripts": {
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "devDependencies": {
     "embedme": "^1.22.0",
-    "husky": "^4.3.6"
-  },
-  "husky": {
-    "precommit": "yarn embedme space-owl.md"
-  },
-  "private": false
+    "husky": "^5.0.6",
+    "pinst": "^2.1.1"
+  }
 }

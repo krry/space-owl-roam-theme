@@ -12,18 +12,39 @@ I have found that the easiest way to implement new styles in Roam is to add them
 2. Then copy this file's contents into it. When you blur the textarea, the styles should save and take effect.
 */
 
+:root {
+  --primary-color: hsl(233, 82%, 41%) !important;
+  --secondary-color: hsl(183, 63%, 43%) !important;
+  --s1: 12px !important;
+  --background-color: hsl(233, 92%, 8%) !important;
+  --monospaces: "NotoMono Nerd Font", monospace !important;
+  --serifs: "NotoSerif Nerd Font", serif, system-ui !important;
+  --sanses: "NotoSans Nerd Font", sans-serif !important;
+}
+
+.roam-body {
+  --bg: var(--background-color);
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-div {
-  font-family: "NotoSerif Nerd Font", serif, system-ui;
+div,
+textarea {
+  font-family: var(--serifs);
 }
 
-textarea {
-  font-family: "Space Mono for Powerline", "Fantasque Sans Mono", monospace;
+textarea:focus {
+  background-image: hsla(233, 30%, 83%, 0.2);
+}
+
+.roam-sidebar-container div,
+.bp3-menu div {
+  font-family: var(--sanses);
+  letter-spacing: 0.5px;
 }
 
 .roam-block-container {
@@ -36,11 +57,11 @@ textarea {
 }
 
 .bp3-button.bp3-minimal {
-  color: hsl(340, 84%, 84%);
+  color: hsl(233, 64%, 84%) !important;
 }
 
 .bp3-button.bp3-minimal:hover {
-  color: hsl(340, 84%, 84%);
+  color: hsl(233, 84%, 84%) !important;
 }
 
 .bp3-elevation-3 {
@@ -48,7 +69,7 @@ textarea {
 }
 
 .bp3-elevation-3>div:hover {
-  background-color: hsl(207, 95%, 8%);
+  background-color: var(--bg);
 }
 
 .kanban-board {
@@ -71,10 +92,10 @@ textarea {
 }
 
 .kanban-column {
-  background-color: hsl(201, 35%, 92%);
+  background-color: hsl(203, 33%, 92%);
   margin: 0px 4px 0px 4px;
   padding: 4px;
-  min-width: 200px;
+  min-width: 203px;
   border-radius: 3px;
 }
 
@@ -88,7 +109,7 @@ textarea {
 
 .rm-block-ref:hover {
   background-color: hsl(233, 20%, 50%);
-  color: hsl(207, 95%, 8%);
+  color: var(--bg);
 }
 
 .checkmark {
@@ -96,7 +117,7 @@ textarea {
 }
 
 .check-container input:checked~.checkmark {
-  background: hsl(197, 84%, 54%);
+  background: hsl(203, 84%, 54%);
 }
 
 .check-container input:checked~.checkmark:after {
@@ -104,33 +125,33 @@ textarea {
 }
 
 .rm-level3 {
-  color: hsl(223, 23%, 61%);
+  color: hsl(233, 23%, 61%);
 }
 
 .rm-page-ref-link-color {
-  color: hsl(340, 84%, 84%);
+  color: hsl(333, 84%, 84%);
 }
 
 a {
-  color: hsl(233, 84%, 64%) !important;
+  color: hsl(233, 94%, 77%) !important;
   transition: 333ms;
 }
 
 a:hover,
 a:focus {
-  color: hsl(203, 84%, 64%) !important;
+  color: hsl(203, 94%, 77%) !important;
 }
 
 a:visited,
 .rm-page-ref {
-  color: hsl(253, 84%, 64%) !important;
+  color: hsl(253, 94%, 77%) !important;
   transition: 333ms;
 }
 
 a:hover:visited,
 .rm-page-ref:hover,
 .rm-page-ref:focus {
-  color: hsl(233, 84%, 64%) !important;
+  color: hsl(233, 94%, 77%) !important;
 }
 
 .rm-page-ref--tag {
@@ -138,11 +159,11 @@ a:hover:visited,
 }
 
 .rm-page-ref.rm-page-ref--tag:hover {
-  color: hsl(253, 84%, 64%) !important;
+  color: hsl(253, 94%, 77%) !important;
 }
 
 a:active {
-  color: hsl(123, 84%, 64%) !important;
+  color: hsl(133, 94%, 77%) !important;
 }
 
 .bp3-menu a,
@@ -175,17 +196,17 @@ a:active {
 }
 
 .rm-reference-item div {
-  background-color: hsl(233, 27%, 25%);
+  /* background-color: hsl(233, 27%, 25%); */
 }
 
 #right-sidebar div .rm-reference-item div,
 .roam-topbar,
 .roam-body {
-  background-color: #011627;
+  background-color: var(--bg);
 }
 
 .roam-body-main {
-  background-color: #011627;
+  background-color: var(--bg);
   color: white;
 }
 
@@ -195,12 +216,12 @@ a:active {
 
 #right-sidebar div {
   background-color: hsl(233, 27%, 25%);
-  color:hsla(200, 0%, 95%, 0.62);
+  color:hsla(203, 0%, 95%, 0.62);
 }
 
 .roam-body .roam-app .roam-sidebar-container {
   background-color: hsl(233, 27%, 25%);
-  border-right: 1px hsl(207, 62%, 12%) solid;
+  border-right: 1px solid hsl(233, 62%, 12%);
 }
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
@@ -213,7 +234,7 @@ a:active {
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover {
-  background: hsl(233, 92%, 8%);
+  background: var(--bg);
   color: white;
   opacity: 0.92;
 }
@@ -222,29 +243,24 @@ a:active {
   text-indent: 0.5em;
 }
 
-.roam-sidebar-container div,
-.bp3-menu div {
-  font-family: "NotoSans Nerd Font", system-ui, sans-serif;
-}
-
 .roam-body .roam-app .roam-sidebar-container .rm-graph-dropdown .menu-title {
-  color: hsl(206, 15%, 75%);
+  color: hsl(203, 15%, 75%);
 }
 
 .roam-body .roam-app .roam-sidebar-container .rm-graph-dropdown .setting {
-  background-color: hsla(204, 33%, 34%, 0.5);
+  background-color: hsla(203, 33%, 33%, 0.5);
 }
 
 .roam-body .roam-app .roam-sidebar-container .rm-graph-dropdown .setting:hover {
-  background-color: hsla(204, 33%, 94%, 0.2);
+  background-color: hsla(203, 33%, 94%, 0.2);
 }
 
 .signout {
-  color: hsla(200, 0%, 95%, 0.5);
+  color: hsla(203, 0%, 95%, 0.5);
 }
 
 .signout:hover {
-  color: hsla(200, 0%, 95%, 1);
+  color: hsla(203, 0%, 95%, 1);
 }
 
 #buffer.tall {
@@ -256,16 +272,16 @@ a:active {
 }
 
 .rm-reference-item {
-  background-color: hsl(207, 95%, 8%);
+  background-color: var(--bg);
 }
 
 .block-highlight-blue,
 #roam-right-sidebar-content div .block-highlight-blue div {
-  background-color: hsl(196, 65%, 76%);
+  background-color: hsl(183, 65%, 76%);
 }
 
 .kanban-board {
-  background: hsl(207, 95%, 8%);
+  background: var(--bg);
   color: white;
 }
 
@@ -275,19 +291,19 @@ a:active {
 }
 
 .kanban-card {
-  color: hsl(207, 95%, 8%);
+  color: var(--bg);
 }
 
 /* highlights */
 
 .roam-highlight {
-  background-color: hsl(196, 65%, 76%);
+  background-color: hsl(183, 65%, 76%);
 }
 
 /* reactions */
 
 .rm-emoji-button {
-  background-color: hsl(231, 19%, 50%) !important;
+  background-color: hsl(233, 19%, 50%) !important;
 }
 
 /* rows */
@@ -299,11 +315,11 @@ a:active {
 
 
 .CodeMirror {
-  font-family: 'Space Mono for Powerline' !important;
+  font-family: var(--monospaces);
   height: 300px;
   color: white;
   direction: ltr;
-  background: hsl(206, 23%, 12%) !important;
+  background: hsl(203, 23%, 12%) !important;
   border-radius: 5px;
 }
 
@@ -323,7 +339,7 @@ a:active {
 
 .CodeMirror-gutters {
   border-right: 0px solid hsl(0, 0%, 87%);
-  background-color: hsl(207, 22%, 18%);
+  background-color: hsl(233, 22%, 18%);
   white-space: nowrap;
   width: 30px;
 }
@@ -334,7 +350,7 @@ a:active {
   text-align: right;
   color: hsl(0, 0%, 60%);
   white-space: nowrap;
-  font-family: 'Fantasque Sans Mono';
+  font-family: var(--monospaces);
 }
 
 .CodeMirror-guttermarker {
@@ -346,7 +362,7 @@ a:active {
 }
 
 .CodeMirror-cursor {
-  border-left: 2px solid hsl(216, 32%, 32%);
+  border-left: 2px solid hsl(233, 32%, 32%);
   border-right: 0;
   margin-left: 0px;
   width: 0
@@ -359,7 +375,7 @@ a:active {
 .cm-fat-cursor .CodeMirror-cursor {
   width: auto;
   border: 0 !important;
-  background: hsl(120, 78%, 70%)
+  background: hsl(133, 80%, 70%)
 }
 
 .cm-fat-cursor div.CodeMirror-cursors {
@@ -367,7 +383,7 @@ a:active {
 }
 
 .cm-fat-cursor-mark {
-  background-color: hsla(120, 100%, 54%, 0.5);
+  background-color: hsla(133, 92%, 54%, 0.5);
   -webkit-animation: blink 1.06s steps(1) infinite;
   -moz-animation: blink 1.06s steps(1) infinite;
   animation: blink 1.06s steps(1) infinite
@@ -379,7 +395,7 @@ a:active {
   -webkit-animation: blink 1.06s steps(1) infinite;
   -moz-animation: blink 1.06s steps(1) infinite;
   animation: blink 1.06s steps(1) infinite;
-  background-color: hsl(120, 78%, 70%)
+  background-color: hsl(133, 80%, 70%)
 }
 
 @-moz-keyframes blink {
@@ -426,15 +442,15 @@ a:active {
 }
 
 .cm-s-default .cm-quote {
-  color: hsl(120, 100%, 30%);
+  color: hsl(133, 92%, 33%);
 }
 
 .cm-negative {
-  color: hsl(360, 69%, 57%);
+  color: hsl(363, 63%, 56%);
 }
 
 .cm-positive {
-  color: hsl(120, 64%, 37%);
+  color: hsl(133, 63%, 33%);
 }
 
 .cm-header,
@@ -455,36 +471,36 @@ a:active {
 }
 
 .cm-s-default .cm-keyword {
-  color: hsl(292, 96%, 80%);
+  color: hsl(293, 96%, 80%);
 }
 
 .cm-s-default .cm-atom {
-  color: hsl(307, 82%, 37%);
+  color: hsl(303, 82%, 37%);
 }
 
 .cm-s-default .cm-number {
-  color: hsl(156, 71%, 37%);
+  color: hsl(153, 71%, 37%);
 }
 
 .cm-s-default .cm-def {
-  color: hsl(240, 100%, 50%);
+  color: hsl(233, 92%, 54%);
 }
 
 .cm-variable {
-  color: hsl(217, 34%, 88%);
+  color: hsl(233, 33%, 88%);
 }
 
 .cm-s-default .cm-variable-2 {
-  color: hsl(217, 34%, 88%);
+  color: hsl(233, 33%, 88%);
 }
 
 .cm-s-default .cm-variable-3,
 .cm-s-default .cm-type {
-  color: hsl(217, 34%, 88%);
+  color: hsl(233, 33%, 88%);
 }
 
 .cm-s-default .cm-comment {
-  color: hsl(30, 84%, 37%);
+  color: hsl(33, 84%, 37%);
 }
 
 .cm-s-default .cm-string {
@@ -492,23 +508,23 @@ a:active {
 }
 
 .cm-s-default .cm-string-2 {
-  color: hsl(20, 84%, 50%);
+  color: hsl(23, 84%, 50%);
 }
 
 .cm-s-default .cm-meta {
-  color: hsl(360, 84%, 86%);
+  color: hsl(363, 84%, 86%);
 }
 
 .cm-s-default .cm-qualifier {
-  color: hsl(0, 0%, 43%);
+  color: hsl(3, 0%, 43%);
 }
 
 .cm-s-default .cm-builtin {
-  color: hsl(199, 84%, 62%);
+  color: hsl(203, 84%, 62%);
 }
 
 .cm-s-default .cm-bracket {
-  color: hsl(60, 17%, 53%);
+  color: hsl(63, 17%, 53%);
 }
 
 .cm-s-default .cm-tag {
@@ -516,23 +532,23 @@ a:active {
 }
 
 .cm-s-default .cm-attribute {
-  color: hsl(240, 84%, 60%);
+  color: hsl(243, 84%, 60%);
 }
 
 .cm-s-default .cm-hr {
-  color: hsl(0, 0%, 60%);
+  color: hsl(3, 0%, 60%);
 }
 
 .cm-s-default .cm-link {
-  color: hsl(240, 84%, 60%);
+  color: hsl(243, 84%, 60%);
 }
 
 .cm-s-default .cm-error {
-  color: red;
+  color: hsl(3, 96%, 56%);
 }
 
 .cm-invalidchar {
-  color: red;
+  color: hsl(3, 96%, 56%);
 }
 
 .CodeMirror-composing {
@@ -541,19 +557,19 @@ a:active {
 }
 
 div.CodeMirror span.CodeMirror-matchingbracket {
-  color: hsl(120, 84%, 37%);
+  color: hsl(133, 84%, 37%);
 }
 
 div.CodeMirror span.CodeMirror-nonmatchingbracket {
-  color: hsl(360, 67%, 40%);
+  color: hsl(363, 67%, 40%);
 }
 
 .CodeMirror-matchingtag {
-  background: hsla(35, 83%, 50%, 0.3);
+  background: hsla(33, 83%, 50%, 0.3);
 }
 
 .CodeMirror-activeline-background {
-  background: hsl(207, 22%, 18%);
+  background: hsl(233, 22%, 18%);
 }
 
 .CodeMirror {
@@ -665,7 +681,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   border-radius: 0;
   border-width: 0;
   background: transparent;
-  font-family: 'Space Mono for Powerline', 'Fantasque Sans Mono', monospace !important;
+  font-family: var(--monospaces);
   font-size: inherit;
   margin: 0;
   white-space: pre;
@@ -754,7 +770,7 @@ div.CodeMirror-dragcursors {
 }
 
 .CodeMirror-focused .CodeMirror-selected {
-  background: hsla(223, 70%, 95%, 0.9);
+  background: hsla(233, 70%, 95%, 0.9);
 }
 
 .CodeMirror-crosshair {
@@ -764,17 +780,17 @@ div.CodeMirror-dragcursors {
 .CodeMirror-line::selection,
 .CodeMirror-line>span::selection,
 .CodeMirror-line>span>span::selection {
-  background: hsl(246, 48%, 89%);
+  background: hsl(243, 48%, 89%);
 }
 
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line>span::-moz-selection,
 .CodeMirror-line>span>span::-moz-selection {
-  background: hsl(246, 48%, 89%);
+  background: hsl(243, 48%, 89%);
 }
 
 .cm-searching {
-  background-color: hsla(60, 87%, 50%, 0.4);
+  background-color: hsla(63, 87%, 50%, 0.4);
 }
 
 .cm-force-border {
@@ -793,5 +809,43 @@ div.CodeMirror-dragcursors {
 
 span.CodeMirror-selectedtext {
   background: 0;
+}
+
+.bp3-datepicker,
+.bp3-datepicker * {
+  background-color: inherit !important;
+}
+
+.bp3-datepicker,
+.bp3-html-select select,
+.bp3-select select,
+.bp3-html-select .bp3-icon,
+.bp3-button .bp3-icon {
+  color: inherit !important;
+}
+
+.bp3-html-select .bp3-icon,
+.bp3-button .bp3-icon {
+  opacity: 0.6;
+}
+
+.rm-find-or-create-wrapper .rm-menu-item .rm-search-title {
+  color: var(--secondary-color) !important;
+}
+
+.rm-mentions .rm-ref-page-view .rm-title-arrow-wrapper {
+  margin-top: 2em;
+}
+
+.roam-body select {
+  background-color: inherit !important;
+  border-color: inherit !important;
+  appearance: none !important;
+  border-radius: 0.25em;
+  color: inherit !important;
+}
+
+.roam-body .rm-zoom .rm-zoom-item {
+  color: white !important;
 }
 ```
