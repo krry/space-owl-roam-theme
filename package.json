@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "embedme": "^1.22.0",
+    "husky": "^4.3.6"
+  },
+  "husky": {
+    "precommit": "yarn embedme space-owl.md"
+  }
+}
