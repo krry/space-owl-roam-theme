@@ -1,7 +1,6 @@
 [[Space Owl]]
-```scss
-// space-owl.css
 
+```scss
 /* Space Owl Theme for [Roam](roamresearch.com)
 
 adapted from [Night Owl by @theianjones](https://github.com/theianjones/roam-research-themes/blob/master/night-owl-ish.css)
@@ -13,28 +12,59 @@ I have found that the easiest way to implement new styles in Roam is to add them
 */
 
 :root {
-  --primary-color: hsl(233, 82%, 41%) !important;
-  --secondary-color: hsl(183, 63%, 43%) !important;
+  --heading-color: hsl(33, 63%, 73%) !important;
+  --secondary-color: hsl(63, 63%, 73%) !important;
+  --tertiary-color: hsl(153, 53%, 73%) !important;
   --s1: 12px !important;
   --background-color: hsl(233, 92%, 8%) !important;
-  --monospaces: "NotoMono Nerd Font", monospace !important;
-  --serifs: "NotoSerif Nerd Font", serif, system-ui !important;
-  --sanses: "NotoSans Nerd Font", sans-serif !important;
+  --monospaces: "Space Mono for Powerline", monospace !important;
+  --serifs: "Aleo", serif, system-ui !important;
+  --sanses: "Open Sans", sans-serif !important;
+  --shade: hsla(233, 92%, 8%, 0.75) !important;
+  --dusk: hsl(233, 27%, 25%);
+  --hilit: hsl(233, 92%, 72%);
 }
 
 .roam-body {
   --bg: var(--background-color);
 }
 
+div {
+  font-family: var(--sanses) !important;
+}
+
+textarea {
+  font-family: var(--serifs) !important;
+}
+
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
-div,
-textarea {
-  font-family: var(--serifs);
+.rm-heading-level-1 > .rm-block__self .rm-block__input,
+.rm-heading-level-2 > .rm-block__self .rm-block__input,
+.rm-heading-level-3 > .rm-block__self .rm-block__input {
+  font-family: var(--sanses) !important;
+}
+
+.rm-heading-level-1 > .rm-block__self textarea.rm-block__input,
+.rm-heading-level-2 > .rm-block__self textarea.rm-block__input,
+.rm-heading-level-3 > .rm-block__self textarea.rm-block__input {
+  font-family: var(--serifs) !important;
+}
+
+h1,
+.rm-heading-level-1 > .rm-block__self .rm-block__input {
+  color: var(--heading-color) !important;
+}
+
+h2,
+.rm-heading-level-2 > .rm-block__self .rm-block__input {
+  color: var(--secondary-color) !important;
+}
+
+h3,
+.rm-heading-level-3 > .rm-block__self .rm-block__input {
+  color: var(--tertiary-color) !important;
 }
 
 textarea:focus {
@@ -44,7 +74,6 @@ textarea:focus {
 .roam-sidebar-container div,
 .bp3-menu div {
   font-family: var(--sanses);
-  letter-spacing: 0.5px;
 }
 
 .roam-block-container {
@@ -68,7 +97,7 @@ textarea:focus {
   background-color: hsl(233, 20%, 50%) !important;
 }
 
-.bp3-elevation-3>div:hover {
+.bp3-elevation-3 > div:hover {
   background-color: var(--bg);
 }
 
@@ -99,7 +128,6 @@ textarea:focus {
   border-radius: 3px;
 }
 
-
 .rm-block-ref {
   border-bottom: none;
   font-size: 1em;
@@ -116,11 +144,11 @@ textarea:focus {
   background: white;
 }
 
-.check-container input:checked~.checkmark {
+.check-container input:checked ~ .checkmark {
   background: hsl(203, 84%, 54%);
 }
 
-.check-container input:checked~.checkmark:after {
+.check-container input:checked ~ .checkmark:after {
   border-color: white;
 }
 
@@ -196,7 +224,7 @@ a:active {
 }
 
 .rm-reference-item div {
-  /* background-color: hsl(233, 27%, 25%); */
+  /* background-color: var(--dusk); */
 }
 
 #right-sidebar div .rm-reference-item div,
@@ -211,29 +239,49 @@ a:active {
 }
 
 .roam-body .roam-app h1 {
-  color: white;
+  color: var(--heading-color);
 }
 
 #right-sidebar div {
-  background-color: hsl(233, 27%, 25%);
-  color:hsla(203, 0%, 95%, 0.62);
+  background-color: var(--dusk);
+  color: hsla(203, 0%, 95%, 0.62);
 }
 
 .roam-body .roam-app .roam-sidebar-container {
-  background-color: hsl(233, 27%, 25%);
+  background-color: var(--dusk);
   border-right: 1px solid hsl(233, 62%, 12%);
 }
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper,
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container>* {
+.roam-body
+  .roam-app
+  .roam-sidebar-container
+  .roam-sidebar-content
+  .starred-pages-wrapper,
+.roam-body
+  .roam-app
+  .roam-sidebar-container
+  .roam-sidebar-content
+  .starred-pages-wrapper
+  .starred-pages
+  .page,
+.roam-body .roam-app .roam-sidebar-container > * {
   opacity: 0.92;
   color: white;
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover,
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover {
+.roam-body
+  .roam-app
+  .roam-sidebar-container
+  .roam-sidebar-content
+  .starred-pages-wrapper
+  .starred-pages
+  .page:hover,
+.roam-body
+  .roam-app
+  .roam-sidebar-container
+  .roam-sidebar-content
+  .log-button:hover {
   background: var(--bg);
   color: white;
   opacity: 0.92;
@@ -286,8 +334,7 @@ a:active {
 }
 
 .kanban-column {
-  background-color: hsl(233, 27%, 25%);
-
+  background-color: var(--dusk);
 }
 
 .kanban-card {
@@ -312,8 +359,6 @@ a:active {
   background-color: hsl(233, 27%, 25%) !important;
 }
 
-
-
 .CodeMirror {
   font-family: var(--monospaces);
   height: 300px;
@@ -324,7 +369,7 @@ a:active {
 }
 
 .CodeMirror-lines {
-  padding: 4px 0
+  padding: 4px 0;
 }
 
 .CodeMirror pre {
@@ -334,7 +379,7 @@ a:active {
 
 .CodeMirror-scrollbar-filler,
 .CodeMirror-gutter-filler {
-  background-color: white
+  background-color: white;
 }
 
 .CodeMirror-gutters {
@@ -354,39 +399,39 @@ a:active {
 }
 
 .CodeMirror-guttermarker {
-  color: black
+  color: black;
 }
 
 .CodeMirror-guttermarker-subtle {
-  color: hsl(0, 0%, 60%)
+  color: hsl(0, 0%, 60%);
 }
 
 .CodeMirror-cursor {
   border-left: 2px solid hsl(233, 32%, 32%);
   border-right: 0;
   margin-left: 0px;
-  width: 0
+  width: 0;
 }
 
 .CodeMirror div.CodeMirror-secondarycursor {
-  border-left: 1px solid silver
+  border-left: 1px solid silver;
 }
 
 .cm-fat-cursor .CodeMirror-cursor {
   width: auto;
   border: 0 !important;
-  background: hsl(133, 80%, 70%)
+  background: hsl(133, 80%, 70%);
 }
 
 .cm-fat-cursor div.CodeMirror-cursors {
-  z-index: 1
+  z-index: 1;
 }
 
 .cm-fat-cursor-mark {
   background-color: hsla(133, 92%, 54%, 0.5);
   -webkit-animation: blink 1.06s steps(1) infinite;
   -moz-animation: blink 1.06s steps(1) infinite;
-  animation: blink 1.06s steps(1) infinite
+  animation: blink 1.06s steps(1) infinite;
 }
 
 .cm-animate-fat-cursor {
@@ -395,30 +440,30 @@ a:active {
   -webkit-animation: blink 1.06s steps(1) infinite;
   -moz-animation: blink 1.06s steps(1) infinite;
   animation: blink 1.06s steps(1) infinite;
-  background-color: hsl(133, 80%, 70%)
+  background-color: hsl(133, 80%, 70%);
 }
 
 @-moz-keyframes blink {
   50% {
-    background-color: transparent
+    background-color: transparent;
   }
 }
 
 @-webkit-keyframes blink {
   50% {
-    background-color: transparent
+    background-color: transparent;
   }
 }
 
 @keyframes blink {
   50% {
-    background-color: transparent
+    background-color: transparent;
   }
 }
 
 .cm-tab {
   display: inline-block;
-  text-decoration: inherit
+  text-decoration: inherit;
 }
 
 .CodeMirror-rulers {
@@ -427,18 +472,18 @@ a:active {
   right: 0;
   top: -50px;
   bottom: -20px;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .CodeMirror-ruler {
   border-left: 1px solid hsl(0, 0%, 80%);
   top: 0;
   bottom: 0;
-  position: absolute
+  position: absolute;
 }
 
 .cm-s-default .cm-header {
-  color: blue
+  color: blue;
 }
 
 .cm-s-default .cm-quote {
@@ -551,6 +596,10 @@ a:active {
   color: hsl(3, 96%, 56%);
 }
 
+.CodeMirror {
+  height: auto;
+}
+
 .CodeMirror-composing {
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -575,7 +624,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror {
   position: relative;
   overflow: hidden;
-  background: white
+  background: white;
 }
 
 .CodeMirror-scroll {
@@ -714,7 +763,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror-linewidget {
   position: relative;
   z-index: 2;
-  padding: .1px;
+  padding: 0.1px;
 }
 
 .CodeMirror-rtl pre {
@@ -774,18 +823,18 @@ div.CodeMirror-dragcursors {
 }
 
 .CodeMirror-crosshair {
-  cursor: crosshair
+  cursor: crosshair;
 }
 
 .CodeMirror-line::selection,
-.CodeMirror-line>span::selection,
-.CodeMirror-line>span>span::selection {
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {
   background: hsl(243, 48%, 89%);
 }
 
 .CodeMirror-line::-moz-selection,
-.CodeMirror-line>span::-moz-selection,
-.CodeMirror-line>span>span::-moz-selection {
+.CodeMirror-line > span::-moz-selection,
+.CodeMirror-line > span > span::-moz-selection {
   background: hsl(243, 48%, 89%);
 }
 
@@ -794,7 +843,7 @@ div.CodeMirror-dragcursors {
 }
 
 .cm-force-border {
-  padding-right: .1px
+  padding-right: 0.1px;
 }
 
 @media print {
@@ -804,7 +853,7 @@ div.CodeMirror-dragcursors {
 }
 
 .cm-tab-wrap-hack:after {
-  content: '';
+  content: "";
 }
 
 span.CodeMirror-selectedtext {
@@ -847,5 +896,40 @@ span.CodeMirror-selectedtext {
 
 .roam-body .rm-zoom .rm-zoom-item {
   color: white !important;
+}
+
+.rm-embed-container--block {
+  background-color: hsla(233, 30%, 12%, 0.7) !important;
+}
+.block-highlight-yellow {
+  color: yellow !important;
+  background-color: hsl(233, 30%, 20%) !important;
+}
+
+.rm-autocomplete-result {
+  color: hsl(299, 75%, 75%) !important;
+}
+.bp3-dialog {
+  background-color: var(--background-color) !important;
+}
+.level3 {
+  color: var(--heading-color);
+}
+.rm-inline-references {
+  background-color: var(--shade);
+}
+.rm-user-settings .rm-display-name-settings__input {
+  background-color: var(--dusk);
+}
+.rm-user-settings .rm-display-name-settings__input:focus {
+  border-color: var(--hilit);
+  background-color: var(--dusk);
+}
+
+.flex-v-box textarea,
+.flex-v-box textarea:focus {
+  background-color: var(--dusk);
+  padding: 0.25em !important;
+  border-radius: 0.25em;
 }
 ```

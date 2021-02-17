@@ -9,28 +9,59 @@ I have found that the easiest way to implement new styles in Roam is to add them
 */
 
 :root {
-  --primary-color: hsl(233, 82%, 41%) !important;
-  --secondary-color: hsl(183, 63%, 43%) !important;
+  --heading-color: hsl(33, 63%, 73%) !important;
+  --secondary-color: hsl(63, 63%, 73%) !important;
+  --tertiary-color: hsl(153, 53%, 73%) !important;
   --s1: 12px !important;
   --background-color: hsl(233, 92%, 8%) !important;
-  --monospaces: "NotoMono Nerd Font", monospace !important;
-  --serifs: "NotoSerif Nerd Font", serif, system-ui !important;
-  --sanses: "NotoSans Nerd Font", sans-serif !important;
+  --monospaces: "Space Mono for Powerline", monospace !important;
+  --serifs: "Aleo", serif, system-ui !important;
+  --sanses: "Open Sans", sans-serif !important;
+  --shade: hsla(233, 92%, 8%, 0.75) !important;
+  --dusk: hsl(233, 27%, 25%);
+  --hilit: hsl(233, 92%, 72%);
 }
 
 .roam-body {
   --bg: var(--background-color);
 }
 
+div {
+  font-family: var(--sanses) !important;
+}
+
+textarea {
+  font-family: var(--serifs) !important;
+}
+
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
-div,
-textarea {
-  font-family: var(--serifs);
+.rm-heading-level-1 > .rm-block__self .rm-block__input,
+.rm-heading-level-2 > .rm-block__self .rm-block__input,
+.rm-heading-level-3 > .rm-block__self .rm-block__input {
+  font-family: var(--sanses) !important;
+}
+
+.rm-heading-level-1 > .rm-block__self textarea.rm-block__input,
+.rm-heading-level-2 > .rm-block__self textarea.rm-block__input,
+.rm-heading-level-3 > .rm-block__self textarea.rm-block__input {
+  font-family: var(--serifs) !important;
+}
+
+h1,
+.rm-heading-level-1 > .rm-block__self .rm-block__input {
+  color: var(--heading-color) !important;
+}
+
+h2,
+.rm-heading-level-2 > .rm-block__self .rm-block__input {
+  color: var(--secondary-color) !important;
+}
+
+h3,
+.rm-heading-level-3 > .rm-block__self .rm-block__input {
+  color: var(--tertiary-color) !important;
 }
 
 textarea:focus {
@@ -40,7 +71,6 @@ textarea:focus {
 .roam-sidebar-container div,
 .bp3-menu div {
   font-family: var(--sanses);
-  letter-spacing: 0.5px;
 }
 
 .roam-block-container {
@@ -192,7 +222,7 @@ a:active {
 }
 
 .rm-reference-item div {
-  /* background-color: hsl(233, 27%, 25%); */
+  /* background-color: var(--dusk); */
 }
 
 #right-sidebar div .rm-reference-item div,
@@ -207,16 +237,16 @@ a:active {
 }
 
 .roam-body .roam-app h1 {
-  color: white;
+  color: var(--heading-color);
 }
 
 #right-sidebar div {
-  background-color: hsl(233, 27%, 25%);
+  background-color: var(--dusk);
   color:hsla(203, 0%, 95%, 0.62);
 }
 
 .roam-body .roam-app .roam-sidebar-container {
-  background-color: hsl(233, 27%, 25%);
+  background-color: var(--dusk);
   border-right: 1px solid hsl(233, 62%, 12%);
 }
 
@@ -282,7 +312,7 @@ a:active {
 }
 
 .kanban-column {
-  background-color: hsl(233, 27%, 25%);
+  background-color: var(--dusk);
 
 }
 
@@ -307,7 +337,6 @@ a:active {
 .rm-pages-row-highlight {
   background-color: hsl(233, 27%, 25%) !important;
 }
-
 
 
 .CodeMirror {
@@ -545,6 +574,10 @@ a:active {
 
 .cm-invalidchar {
   color: hsl(3, 96%, 56%);
+}
+
+.CodeMirror {
+  height: auto;
 }
 
 .CodeMirror-composing {
@@ -843,4 +876,39 @@ span.CodeMirror-selectedtext {
 
 .roam-body .rm-zoom .rm-zoom-item {
   color: white !important;
+}
+
+.rm-embed-container--block {
+  background-color: hsla(233, 30%, 12%, 0.7) !important;
+}
+.block-highlight-yellow {
+  color: yellow !important;
+  background-color: hsl(233, 30%, 20%) !important;
+}
+
+.rm-autocomplete-result {
+  color: hsl(299, 75%, 75%) !important;
+}
+.bp3-dialog {
+  background-color: var(--background-color) !important;
+}
+.level3 {
+  color: var(--heading-color);
+}
+.rm-inline-references {
+  background-color: var(--shade);
+}
+.rm-user-settings .rm-display-name-settings__input {
+  background-color: var(--dusk);
+}
+.rm-user-settings .rm-display-name-settings__input:focus {
+  border-color: var(--hilit);
+  background-color: var(--dusk);
+}
+
+.flex-v-box textarea,
+.flex-v-box textarea:focus {
+  background-color: var(--dusk);
+  padding: 0.25em !important;
+  border-radius: 0.25em;
 }

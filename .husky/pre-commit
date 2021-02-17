@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname $0)/_/husky.sh"
 
-yarn embedme space-owl.md
+npx embedme space-owl.md
